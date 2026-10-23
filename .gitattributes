@@ -1,0 +1,11 @@
+# Garante fim de linha LF nos arquivos usados dentro do Linux, mesmo clonando no Windows
+* text=auto
+*.sh       text eol=lf
+Dockerfile text eol=lf
+motd       text eol=lf
+*.py       text eol=lf
+# Binarios
+*.docx binary
+*.png  binary
+*.html     text eol=lf
+*.conf     text eol=lf

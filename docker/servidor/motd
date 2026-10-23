@@ -1,0 +1,12 @@
+
+ ==============================================================
+   Base_Linux (SERVIDOR) - Debian 13 - Projeto ambiente_02
+ --------------------------------------------------------------
+   eth0 (WAN) : 172.31.0.10/24    -> Internet
+   eth1 (LAN) : 192.168.200.10/24 -> rede interna (Cliente_Linux)
+   Cliente    : Cliente_Linux = 192.168.200.20 (nome: cliente)
+   Recursos   : 1 vCPU | 2 GB RAM
+   Usuarios   : admin / adm123 (sudo)  |  root / root123 (su -)
+   Dica       : sudo apt update && sudo apt install apache2
+ ==============================================================
+

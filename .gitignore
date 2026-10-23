@@ -1,0 +1,8 @@
+# Arquivos do macOS (Finder / discos externos)
+.DS_Store
+._*
+# Python
+__pycache__/
+*.pyc
+# Arquivos temporarios do Word
+~$*
