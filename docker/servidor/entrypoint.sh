@@ -1,5 +1,5 @@
 #!/bin/bash
-# Inicializacao do servidor Base_Linux:
+# Inicializacao do servidor Comunicacao_Linux:
 # garante a rota padrao pela WAN (eth0), gera chaves SSH, sobe cron/rsyslog
 # e mantem o sshd em primeiro plano.
 set -e

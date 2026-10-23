@@ -13,9 +13,9 @@ import subprocess
 import sys
 
 PROJETO = "ambiente_02"
-CONTAINERS = ["Cliente_Linux", "Base_Linux"]
+CONTAINERS = ["Cliente_Linux", "Comunicacao_Linux"]
 REDES = ["amb02_wan", "amb02_lan"]
-IMAGENS = ["ambiente02/cliente_linux:debian13-xfce", "ambiente02/base_linux:debian13", "debian:13"]
+IMAGENS = ["ambiente02/cliente_linux:debian13-xfce", "ambiente02/comunicacao_linux:debian13", "debian:13"]
 
 
 def run(cmd):
@@ -33,7 +33,7 @@ def existe(tipo, nome):
 
 
 def do_projeto(nome):
-    """So mexe em containers deste projeto (Base_Linux tambem existe no ambiente_01)."""
+    """So mexe em containers com o rotulo projeto=ambiente_02."""
     r = subprocess.run(["docker", "inspect", "-f", '{{index .Config.Labels "projeto"}}', nome],
                        text=True, capture_output=True)
     return r.returncode == 0 and r.stdout.strip() == PROJETO

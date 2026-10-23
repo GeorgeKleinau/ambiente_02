@@ -7,7 +7,7 @@ O que faz (idempotente: pode rodar quantas vezes quiser):
   2. Baixa a imagem oficial debian:13 (pull) e testa
   3. Constroi as imagens do servidor e do cliente (pasta ../docker)
   4. Cria as redes  amb02_wan (Internet)  e  amb02_lan (rede interna)
-  5. Cria (ou so inicia) os containers Base_Linux e Cliente_Linux
+  5. Cria (ou so inicia) os containers Comunicacao_Linux e Cliente_Linux
   6. Testa a comunicacao entre as maquinas e mostra como acessar
 
 Uso:
@@ -31,13 +31,13 @@ WAN = {"nome": "amb02_wan", "subnet": "172.31.0.0/24", "gateway": "172.31.0.1"}
 LAN = {"nome": "amb02_lan", "subnet": "192.168.200.0/24", "gateway": "192.168.200.1"}
 
 SERVIDOR = {
-    "nome": "Base_Linux", "hostname": "base-linux", "pasta": "servidor",
-    "imagem": "ambiente02/base_linux:debian13",
+    "nome": "Comunicacao_Linux", "hostname": "comunicacao-linux", "pasta": "servidor",
+    "imagem": "ambiente02/comunicacao_linux:debian13",
     "ram": "2g", "cpus": "1",
     # (rede, ip, interface, apelidos DNS)
     "redes": [(WAN, "172.31.0.10", "eth0", []),
-              (LAN, "192.168.200.10", "eth1", ["servidor", "base-linux"])],
-    "portas": ["2222:22"],
+              (LAN, "192.168.200.10", "eth1", ["servidor", "comunicacao-linux"])],
+    "portas": ["2223:22"],
     "env": [f"WAN_GATEWAY={WAN['gateway']}"],
     "extras": [],
 }
@@ -137,15 +137,13 @@ def main():
               f"(minimo: Docker Engine {VERSAO_MINIMA}).")
         sys.exit(1)
     print(f"  Docker {versao} OK")
-    # O nome Base_Linux tambem e usado pelo projeto ambiente_01
+    # Nao reaproveita um container de mesmo nome criado por outro projeto
     for maq in MAQUINAS:
         if existe("container", maq["nome"]):
             dono = projeto_do_container(maq["nome"])
             if dono != PROJETO:
                 print(f"[ERRO] Ja existe um container {maq['nome']} de outro projeto "
-                      f"({dono or 'desconhecido'}).")
-                print("       Remova-o antes (ex.: no ambiente_01 rode "
-                      "'python3 finalizar_ambiente.py --remover').")
+                      f"({dono or 'desconhecido'}). Remova-o ou renomeie-o antes.")
                 sys.exit(1)
 
     etapa(2, f"Baixando e testando a imagem {IMAGEM_BASE}")
@@ -197,9 +195,9 @@ def main():
 
     print(f"""
 ======================= AMBIENTE PRONTO =======================
- SERVIDOR Base_Linux (terminal / SSH)
-   Terminal : docker exec -it -u admin Base_Linux bash
-   SSH      : ssh admin@localhost -p 2222      (senha: adm123)
+ SERVIDOR Comunicacao_Linux (terminal / SSH)
+   Terminal : docker exec -it -u admin Comunicacao_Linux bash
+   SSH      : ssh admin@localhost -p 2223      (senha: adm123)
    Root     : su -                             (senha: root123)
 
  CLIENTE Cliente_Linux (interface grafica XFCE no navegador)

@@ -2,10 +2,10 @@
 
 Ambiente de treino com **duas máquinas** que se comunicam por uma rede interna:
 
-| | Servidor `Base_Linux` | Cliente `Cliente_Linux` |
+| | Servidor `Comunicacao_Linux` | Cliente `Cliente_Linux` |
 |---|---|---|
 | Sistema | Debian 13, terminal/CLI | Debian 13 + interface gráfica XFCE |
-| Acesso | `docker exec` ou SSH (porta 2222) | Navegador: <http://localhost:6080> |
+| Acesso | `docker exec` ou SSH (porta 2223) | Navegador: <http://localhost:6080> |
 | Recursos | 1 núcleo · 2 GB RAM | 1 núcleo · 2 GB RAM |
 | eth0 | WAN `amb02_wan` 172.31.0.10, com Internet | LAN `amb02_lan` 192.168.200.20, sem Internet |
 | eth1 | LAN `amb02_lan` 192.168.200.10 | — |
@@ -21,7 +21,7 @@ Na LAN, as máquinas se chamam pelos nomes `servidor` e `cliente`. Por exemplo, 
 
 - Docker Desktop atualizado (Docker Engine 25+) em Windows, macOS ou Linux, com pelo menos 5 GB de RAM reservados
 - Python 3.8+ (apenas a biblioteca padrão)
-- Portas 2222 e 6080 livres e Internet na primeira execução (cerca de 2 GB de downloads)
+- Portas 2223 e 6080 livres e Internet na primeira execução (cerca de 2 GB de downloads)
 
 ## Uso
 
@@ -33,7 +33,7 @@ python3 finalizar_ambiente.py --remover  # exclui containers + redes
 python3 finalizar_ambiente.py --tudo     # exclui também as imagens
 ```
 
-> O nome `Base_Linux` também é usado pelo projeto ambiente_01. Só um dos dois pode existir de cada vez.
+> Pode rodar ao mesmo tempo que o ambiente_01: os nomes dos containers, as redes e as portas são diferentes (ambiente_01 usa Base_Linux e a porta 2222).
 
 ## Estrutura
 

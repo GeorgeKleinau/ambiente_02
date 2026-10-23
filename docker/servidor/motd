@@ -1,6 +1,6 @@
 
  ==============================================================
-   Base_Linux (SERVIDOR) - Debian 13 - Projeto ambiente_02
+   Comunicacao_Linux (SERVIDOR) - Debian 13 - ambiente_02
  --------------------------------------------------------------
    eth0 (WAN) : 172.31.0.10/24    -> Internet
    eth1 (LAN) : 192.168.200.10/24 -> rede interna (Cliente_Linux)

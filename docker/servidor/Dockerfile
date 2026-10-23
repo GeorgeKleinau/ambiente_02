@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------
-# Projeto ambiente_02 - SERVIDOR Base_Linux (Debian 13 "trixie")
+# Projeto ambiente_02 - SERVIDOR Comunicacao_Linux (Debian 13 "trixie")
 # Terminal/CLI + SSH, pronto para instalar servicos (web, ftp, samba...)
 # ------------------------------------------------------------------
 FROM debian:13

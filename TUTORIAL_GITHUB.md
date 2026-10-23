@@ -67,7 +67,7 @@ python3 iniciar_ambiente.py      # Windows: py iniciar_ambiente.py
 
 Depois acesse:
 - **Cliente (XFCE):** http://localhost:6080 (senha cliente123)
-- **Servidor (SSH):** `ssh admin@localhost -p 2222` (senha adm123)
+- **Servidor (SSH):** `ssh admin@localhost -p 2223` (senha adm123)
 
 ## Problemas comuns
 
